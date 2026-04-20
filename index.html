@@ -3,902 +3,1537 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thiago Barros — Desenvolvedor Backend Java</title>
-  <meta name="description" content="Portfólio de Thiago Barros, Desenvolvedor Backend Java com experiência em Spring Boot, microsserviços, PostgreSQL e infraestrutura." />
+  <title>Thiago Barros | Desenvolvedor Backend Java</title>
+  <meta name="description" content="Currículo e portfólio de Thiago Barros, Desenvolvedor Backend Java com experiência em Spring Boot, microsserviços, PostgreSQL, infraestrutura e sustentação em produção." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0b0e14;
-      --bg2: #111520;
-      --bg3: #181d2a;
-      --card: #141927;
-      --border: rgba(255,255,255,0.07);
-      --border2: rgba(255,255,255,0.13);
-      --text: #e8eaf0;
-      --text2: #8b92a8;
-      --text3: #555e75;
-      --blue: #3b82f6;
-      --blue-dim: #1d4ed8;
-      --blue-bg: rgba(59,130,246,0.10);
-      --blue-border: rgba(59,130,246,0.28);
-      --green: #22c55e;
-      --green-bg: rgba(34,197,94,0.10);
-      --green-border: rgba(34,197,94,0.25);
-      --amber: #f59e0b;
-      --amber-bg: rgba(245,158,11,0.10);
-      --amber-border: rgba(245,158,11,0.25);
-      --accent-line: #3b82f6;
-      --radius: 14px;
-      --radius-sm: 8px;
+      --bg: #f7f9fc;
+      --surface: #ffffff;
+      --surface-2: #eef4ff;
+      --surface-3: #f3f7f6;
+      --ink: #182233;
+      --muted: #5c687a;
+      --soft: #7a8596;
+      --line: #d8e0eb;
+      --line-strong: #bdcadb;
+      --blue: #1d5fd1;
+      --blue-2: #0f3f93;
+      --blue-soft: #e9f1ff;
+      --green: #157c58;
+      --green-soft: #e8f6ef;
+      --amber: #a45c00;
+      --amber-soft: #fff3dc;
+      --red: #b63232;
+      --red-soft: #fff0f0;
+      --shadow: 0 22px 50px rgba(24, 34, 51, 0.09);
+      --radius: 8px;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      line-height: 1.7;
+      margin: 0;
       min-height: 100vh;
+      background:
+        linear-gradient(180deg, rgba(232, 241, 255, 0.84), rgba(247, 249, 252, 0) 420px),
+        var(--bg);
+      color: var(--ink);
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
     }
 
-    /* subtle grid texture */
     body::before {
-      content: '';
+      content: "";
       position: fixed;
       inset: 0;
+      z-index: -1;
       background-image:
-        linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
-      background-size: 48px 48px;
+        linear-gradient(rgba(29, 95, 209, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(29, 95, 209, 0.045) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: linear-gradient(180deg, #000 0, transparent 520px);
       pointer-events: none;
-      z-index: 0;
     }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 16px;
+      top: -48px;
+      z-index: 200;
+      background: var(--ink);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: top 0.2s ease;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
       z-index: 100;
-      background: rgba(11,14,20,0.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 2rem;
-      height: 56px;
+      background: rgba(255, 255, 255, 0.88);
+      border-bottom: 1px solid rgba(216, 224, 235, 0.9);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      width: min(1120px, calc(100% - 40px));
+      height: 68px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 24px;
     }
 
-    .nav-logo {
-      font-family: 'Syne', sans-serif;
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ink);
       font-weight: 800;
-      font-size: 18px;
-      color: var(--text);
       text-decoration: none;
-      letter-spacing: -0.03em;
     }
 
-    .nav-logo span { color: var(--blue); }
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border-radius: 7px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 13px;
+      line-height: 1;
+    }
 
     .nav-links {
       display: flex;
-      gap: 1.75rem;
+      align-items: center;
+      gap: 6px;
       list-style: none;
+      margin: 0;
+      padding: 0;
     }
 
-    .nav-links a {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text2);
+    .nav-links a,
+    .mobile-menu a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      padding: 0 11px;
+      border-radius: 6px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
       text-decoration: none;
-      transition: color .2s;
+      transition: background 0.18s ease, color 0.18s ease;
     }
 
-    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover,
+    .nav-links a.active,
+    .mobile-menu a:hover {
+      background: var(--blue-soft);
+      color: var(--blue-2);
+    }
 
-    /* ── LAYOUT ── */
-    main {
-      position: relative;
-      z-index: 1;
-      max-width: 860px;
+    .menu-button {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--surface);
+      color: var(--ink);
+      cursor: pointer;
+      place-items: center;
+    }
+
+    .menu-button svg {
+      width: 21px;
+      height: 21px;
+    }
+
+    .mobile-menu {
+      display: none;
+      width: min(1120px, calc(100% - 40px));
       margin: 0 auto;
-      padding: 100px 2rem 6rem;
+      padding: 0 0 16px;
     }
 
-    section { margin-bottom: 5rem; }
-
-    /* ── SECTION LABEL ── */
-    .sec-label {
-      display: inline-flex;
-      align-items: center;
+    .mobile-menu.open {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 8px;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 1.5rem;
     }
 
-    .sec-label::before {
-      content: '';
-      display: block;
-      width: 20px;
-      height: 1.5px;
-      background: var(--blue);
+    main {
+      padding: 56px 0 84px;
     }
 
-    /* ── HERO ── */
-    #hero {
-      padding-top: 2rem;
-      padding-bottom: 4rem;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 5rem;
-      animation: fadeUp 0.7s ease both;
+    section {
+      scroll-margin-top: 92px;
     }
 
-    .hero-badge {
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 330px;
+      gap: 48px;
+      align-items: center;
+      padding: 38px 0 68px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero > *,
+    .section-head > *,
+    .summary-panel > *,
+    .skills-layout > *,
+    .soft-grid > *,
+    .project-grid > *,
+    .education-grid > *,
+    .cert-layout > *,
+    .contact-panel > * {
+      min-width: 0;
+    }
+
+    .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
+      gap: 9px;
+      margin-bottom: 18px;
+      color: var(--green);
+      font-family: "JetBrains Mono", monospace;
       font-size: 12px;
-      font-weight: 500;
-      color: var(--blue);
-      background: var(--blue-bg);
-      border: 1px solid var(--blue-border);
-      padding: 5px 13px;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
       border-radius: 999px;
-      margin-bottom: 1.5rem;
+      background: var(--green);
+      box-shadow: 0 0 0 5px rgba(21, 124, 88, 0.12);
     }
 
-    .hero-badge::before {
-      content: '';
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--blue);
-      animation: pulse 2s infinite;
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
     }
 
-    @keyframes pulse {
-      0%,100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-
-    #hero h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(40px, 7vw, 68px);
+    h1 {
+      max-width: 720px;
+      color: var(--ink);
+      font-size: 76px;
+      line-height: 0.98;
       font-weight: 800;
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-      color: var(--text);
-      margin-bottom: 1.25rem;
+      letter-spacing: 0;
     }
 
-    #hero h1 .accent { color: var(--blue); }
+    .role {
+      margin-top: 18px;
+      color: var(--blue);
+      font-size: 29px;
+      font-weight: 750;
+      letter-spacing: 0;
+    }
 
-    .hero-bio {
-      font-size: 16px;
-      color: var(--text2);
+    .hero-copy {
+      max-width: 720px;
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 18px;
       line-height: 1.75;
-      max-width: 580px;
-      margin-bottom: 2rem;
     }
 
-    .hero-bio strong { color: var(--text); font-weight: 500; }
+    .hero-copy strong {
+      color: var(--ink);
+      font-weight: 700;
+    }
 
-    .hero-contacts {
+    .actions {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+      margin-top: 28px;
     }
 
-    .contact-link {
+    .button {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      font-size: 13px;
-      font-weight: 500;
-      padding: 8px 16px;
-      border-radius: 999px;
-      border: 1px solid var(--border2);
-      color: var(--text2);
-      text-decoration: none;
-      transition: border-color .2s, color .2s, background .2s;
-      background: var(--card);
-    }
-
-    .contact-link:hover {
-      border-color: var(--blue-border);
-      color: var(--blue);
-      background: var(--blue-bg);
-    }
-
-    .contact-link.primary {
-      background: var(--blue);
-      border-color: var(--blue);
-      color: #fff;
-    }
-
-    .contact-link.primary:hover {
-      background: var(--blue-dim);
-      border-color: var(--blue-dim);
-      color: #fff;
-    }
-
-    /* ── DIFFERENCIAL ── */
-    .diff-card {
-      background: var(--blue-bg);
-      border: 1px solid var(--blue-border);
-      border-radius: var(--radius);
-      padding: 20px 24px;
-      margin-bottom: 5rem;
+      justify-content: center;
+      gap: 9px;
+      min-height: 44px;
+      padding: 0 16px;
+      border: 1px solid var(--line-strong);
+      border-radius: 7px;
+      background: var(--surface);
+      color: var(--ink);
       font-size: 14px;
-      color: #93c5fd;
-      line-height: 1.7;
-      animation: fadeUp 0.7s 0.15s ease both;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 9px 24px rgba(24, 34, 51, 0.06);
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
     }
 
-    .diff-card strong { color: #bfdbfe; font-weight: 500; }
+    .button svg {
+      width: 17px;
+      height: 17px;
+      flex: 0 0 auto;
+    }
 
-    /* ── SKILLS ── */
-    .skills-block { margin-bottom: 1.5rem; }
-    .skills-block-name {
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: var(--blue);
+      background: var(--blue-soft);
+    }
+
+    .button.primary {
+      border-color: var(--blue);
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .button.primary:hover {
+      background: var(--blue-2);
+    }
+
+    .hero-card {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .portrait {
+      aspect-ratio: 1 / 1.05;
+      background: linear-gradient(160deg, var(--blue-soft), #fff 58%, var(--green-soft));
+      display: grid;
+      place-items: end center;
+      padding: 18px 18px 0;
+    }
+
+    .portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 7px 7px 0 0;
+      filter: saturate(1.02) contrast(1.02);
+    }
+
+    .hero-card-body {
+      display: grid;
+      gap: 11px;
+      padding: 18px;
+    }
+
+    .quick-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .quick-line svg {
+      width: 17px;
+      height: 17px;
+      margin-top: 2px;
+      color: var(--blue);
+      flex: 0 0 auto;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .metric {
+      min-height: 104px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.76);
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--ink);
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .section {
+      padding: 70px 0 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+      margin-bottom: 24px;
+    }
+
+    .section-label {
+      color: var(--blue);
+      font-family: "JetBrains Mono", monospace;
       font-size: 12px;
-      font-weight: 500;
-      color: var(--text3);
+      font-weight: 600;
+      letter-spacing: 0;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 8px;
     }
 
-    .tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    h2 {
+      max-width: 760px;
+      color: var(--ink);
+      font-size: 40px;
+      line-height: 1.12;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .section-intro {
+      max-width: 780px;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .summary-panel {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 14px;
+    }
+
+    .callout,
+    .card,
+    .experience-item,
+    .project-card,
+    .education-card,
+    .cert-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 10px 28px rgba(24, 34, 51, 0.05);
+    }
+
+    .callout {
+      padding: 24px;
+      border-left: 5px solid var(--blue);
+    }
+
+    .callout p {
+      color: var(--muted);
+    }
+
+    .callout strong {
+      color: var(--ink);
+    }
+
+    .focus-list {
+      display: grid;
+      gap: 10px;
+      padding: 18px;
+    }
+
+    .focus-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .focus-item::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      margin-top: 7px;
+      border-radius: 999px;
+      background: var(--green);
+      flex: 0 0 auto;
+    }
+
+    .skills-layout {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      padding: 22px;
+    }
+
+    .card h3,
+    .project-card h3,
+    .experience-title {
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.25;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .card p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
 
     .tag {
-      font-size: 12.5px;
-      font-weight: 400;
-      padding: 5px 13px;
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 11px;
+      border: 1px solid var(--line);
       border-radius: 999px;
-      border: 1px solid var(--border);
-      color: var(--text2);
-      background: var(--card);
-      transition: border-color .2s, color .2s;
+      background: #fff;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 650;
+      white-space: nowrap;
     }
 
-    .tag:hover { border-color: var(--border2); color: var(--text); }
-
-    .tag.main {
-      background: var(--blue-bg);
-      border-color: var(--blue-border);
-      color: #93c5fd;
-      font-weight: 500;
+    .tag.blue {
+      border-color: #bed4ff;
+      background: var(--blue-soft);
+      color: var(--blue-2);
     }
 
     .tag.green {
-      background: var(--green-bg);
-      border-color: var(--green-border);
-      color: #86efac;
+      border-color: #bfe7d4;
+      background: var(--green-soft);
+      color: var(--green);
     }
 
     .tag.amber {
-      background: var(--amber-bg);
-      border-color: var(--amber-border);
-      color: #fcd34d;
+      border-color: #f5d8a9;
+      background: var(--amber-soft);
+      color: var(--amber);
     }
 
-    /* ── EXPERIENCE ── */
-    .xp-list { display: flex; flex-direction: column; gap: 16px; }
-
-    .xp-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px 28px;
-      position: relative;
-      overflow: hidden;
-      transition: border-color .25s, transform .2s;
+    .tag.red {
+      border-color: #f0c6c6;
+      background: var(--red-soft);
+      color: var(--red);
     }
 
-    .xp-card:hover {
-      border-color: var(--blue-border);
-      transform: translateY(-2px);
-    }
-
-    .xp-card::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 3px;
-      background: var(--blue);
-    }
-
-    .xp-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 4px;
-    }
-
-    .xp-role {
-      font-family: 'Syne', sans-serif;
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    .xp-period {
-      font-size: 12px;
-      color: var(--text3);
-      white-space: nowrap;
-      padding: 3px 10px;
-      border-radius: 999px;
-      background: var(--bg3);
-      border: 1px solid var(--border);
-    }
-
-    .xp-company {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--blue);
-      margin-bottom: 14px;
-    }
-
-    .xp-bullets { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-
-    .xp-bullets li {
-      font-size: 13.5px;
-      color: var(--text2);
-      line-height: 1.6;
-      padding-left: 16px;
-      position: relative;
-    }
-
-    .xp-bullets li::before {
-      content: '›';
-      position: absolute;
-      left: 0;
-      color: var(--blue);
-      font-weight: 700;
-    }
-
-    /* ── PROJECTS ── */
-    .proj-grid {
+    .soft-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .soft-card {
+      min-height: 190px;
+      padding: 21px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 10px 28px rgba(24, 34, 51, 0.05);
+    }
+
+    .soft-icon {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      border-radius: 8px;
+      background: var(--surface-2);
+      color: var(--blue);
+    }
+
+    .soft-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .soft-card:nth-child(2) .soft-icon,
+    .soft-card:nth-child(5) .soft-icon {
+      background: var(--green-soft);
+      color: var(--green);
+    }
+
+    .soft-card:nth-child(3) .soft-icon,
+    .soft-card:nth-child(6) .soft-icon {
+      background: var(--amber-soft);
+      color: var(--amber);
+    }
+
+    .soft-card h3 {
+      color: var(--ink);
+      font-size: 17px;
+      line-height: 1.25;
+      margin: 0;
+    }
+
+    .soft-card p {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .experience-list {
+      display: grid;
       gap: 16px;
     }
 
-    .proj-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
+    .experience-item {
+      display: grid;
+      grid-template-columns: 240px minmax(0, 1fr);
+      gap: 24px;
       padding: 24px;
       position: relative;
       overflow: hidden;
-      transition: border-color .25s, transform .2s;
-      display: flex;
-      flex-direction: column;
     }
 
-    .proj-card:hover {
-      border-color: var(--green-border);
-      transform: translateY(-2px);
-    }
-
-    .proj-card::before {
-      content: '';
+    .experience-item::before {
+      content: "";
       position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 3px;
+      inset: 0 auto 0 0;
+      width: 5px;
+      background: var(--blue);
+    }
+
+    .experience-item:nth-child(2)::before {
       background: var(--green);
     }
 
-    .proj-icon {
-      font-size: 28px;
-      margin-bottom: 12px;
+    .experience-item:nth-child(3)::before {
+      background: var(--amber);
     }
 
-    .proj-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 10px;
-      line-height: 1.3;
+    .period {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--bg);
+      color: var(--muted);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
     }
 
-    .proj-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+    .company {
+      margin-top: 12px;
+      color: var(--blue);
+      font-weight: 800;
+    }
 
-    .proj-desc { list-style: none; display: flex; flex-direction: column; gap: 5px; margin-top: auto; }
+    .location {
+      color: var(--soft);
+      font-size: 14px;
+    }
 
-    .proj-desc li {
-      font-size: 13px;
-      color: var(--text2);
-      line-height: 1.55;
-      padding-left: 14px;
+    .contract {
+      display: inline-flex;
+      margin-top: 12px;
+      min-height: 26px;
+      align-items: center;
+      padding: 0 9px;
+      border-radius: 999px;
+      background: var(--amber-soft);
+      color: var(--amber);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .experience-body ul,
+    .project-card ul {
+      display: grid;
+      gap: 8px;
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .experience-body li,
+    .project-card li {
       position: relative;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.55;
     }
 
-    .proj-desc li::before {
-      content: '›';
+    .experience-body li::before,
+    .project-card li::before {
+      content: "";
       position: absolute;
       left: 0;
-      color: var(--green);
-      font-weight: 700;
-    }
-
-    /* ── EDUCATION ── */
-    .edu-list { display: flex; flex-direction: column; gap: 12px; }
-
-    .edu-card {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-      padding: 18px 22px;
-      background: var(--card);
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border);
-      transition: border-color .2s;
-    }
-
-    .edu-card:hover { border-color: var(--border2); }
-
-    .edu-dot {
-      width: 11px; height: 11px;
-      border-radius: 50%;
+      top: 10px;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
       background: var(--blue);
-      flex-shrink: 0;
-      margin-top: 5px;
-      box-shadow: 0 0 0 3px var(--blue-bg);
     }
 
-    .edu-course { font-size: 14px; font-weight: 500; color: var(--text); }
-    .edu-inst { font-size: 13px; color: var(--text2); }
-    .edu-period { font-size: 12px; color: var(--text3); margin-top: 3px; }
-
-    /* ── CERTS ── */
-    .cert-grid {
+    .project-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      gap: 10px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
     }
 
-    .cert-item {
-      padding: 14px 16px;
-      background: var(--card);
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border);
-      font-size: 13px;
-      color: var(--text2);
-      line-height: 1.5;
-      transition: border-color .2s, color .2s;
+    .project-card {
+      padding: 24px;
     }
 
-    .cert-item:hover { border-color: var(--border2); color: var(--text); }
-
-    .cert-source {
-      font-size: 10.5px;
-      font-weight: 500;
-      color: var(--text3);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 4px;
+    .project-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
     }
 
-    /* ── FOOTER ── */
-    footer {
-      position: relative;
-      z-index: 1;
-      border-top: 1px solid var(--border);
-      padding: 3rem 2rem;
-      text-align: center;
-      background: var(--bg);
+    .project-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--green-soft);
+      color: var(--green);
+      flex: 0 0 auto;
     }
 
-    .footer-name {
-      font-family: 'Syne', sans-serif;
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--text);
-      margin-bottom: 6px;
+    .project-mark svg {
+      width: 21px;
+      height: 21px;
     }
 
-    .footer-sub {
-      font-size: 13px;
-      color: var(--text3);
-      margin-bottom: 1.5rem;
+    .project-card p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
     }
 
-    .footer-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
+    .education-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
     }
 
-    .fade { animation: fadeUp 0.6s ease both; }
-    .fade-1 { animation-delay: 0.05s; }
-    .fade-2 { animation-delay: 0.12s; }
-    .fade-3 { animation-delay: 0.2s; }
-    .fade-4 { animation-delay: 0.28s; }
-    .fade-5 { animation-delay: 0.36s; }
+    .education-card,
+    .cert-card {
+      padding: 22px;
+    }
 
-    /* ── RESPONSIVE ── */
+    .education-card h3,
+    .cert-card h3 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 17px;
+      line-height: 1.35;
+    }
+
+    .education-card p,
+    .cert-card p {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .cert-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .cert-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .contact-panel {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 22px;
+      align-items: center;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(29, 95, 209, 0.1), rgba(21, 124, 88, 0.08)),
+        var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-panel h2 {
+      font-size: 36px;
+    }
+
+    .contact-panel p {
+      margin-top: 10px;
+      color: var(--muted);
+      max-width: 640px;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0 38px;
+      color: var(--soft);
+      font-size: 14px;
+    }
+
+    .footer .page {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer strong {
+      color: var(--ink);
+    }
+
+    .fade {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .fade.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    @media (max-width: 920px) {
+      .nav-links {
+        display: none;
+      }
+
+      .menu-button {
+        display: grid;
+      }
+
+      .hero,
+      .summary-panel,
+      .section-head,
+      .experience-item,
+      .cert-layout,
+      .contact-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        gap: 28px;
+      }
+
+      .hero-card {
+        width: min(100%, 380px);
+        max-width: 380px;
+      }
+
+      .skills-layout,
+      .soft-grid,
+      .project-grid,
+      .education-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-panel .actions {
+        margin-top: 0;
+      }
+    }
+
     @media (max-width: 640px) {
-      nav { padding: 0 1.25rem; }
-      .nav-links { display: none; }
-      main { padding: 80px 1.25rem 4rem; }
-      #hero h1 { font-size: 38px; }
-      .proj-grid { grid-template-columns: 1fr; }
-      .xp-card { padding: 18px 20px; }
+      .page,
+      .nav,
+      .mobile-menu {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .nav {
+        height: 62px;
+      }
+
+      main {
+        padding-top: 32px;
+      }
+
+      .hero {
+        padding: 20px 0 46px;
+      }
+
+      h1 {
+        font-size: 44px;
+      }
+
+      .role {
+        font-size: 22px;
+      }
+
+      h2,
+      .contact-panel h2 {
+        font-size: 30px;
+      }
+
+      .hero-copy {
+        font-size: 16px;
+      }
+
+      .actions {
+        width: 100%;
+      }
+
+      .button {
+        flex: 1 1 100%;
+      }
+
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding-top: 54px;
+      }
+
+      .card,
+      .callout,
+      .experience-item,
+      .project-card,
+      .education-card,
+      .cert-card,
+      .soft-card,
+      .contact-panel {
+        padding: 18px;
+      }
+
+      .tag {
+        white-space: normal;
+      }
+
+      .mobile-menu.open {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-<!-- NAV -->
-<nav>
-  <a class="nav-logo" href="#hero">TB<span>.</span></a>
-  <ul class="nav-links">
-    <li><a href="#skills">Stack</a></li>
-    <li><a href="#experience">Experiência</a></li>
-    <li><a href="#projects">Projetos</a></li>
-    <li><a href="#education">Formação</a></li>
-    <li><a href="mailto:thiagosbarros_@hotmail.com">Contato</a></li>
-  </ul>
-</nav>
-
-<main>
-
-  <!-- HERO -->
-  <section id="hero">
-    <div class="hero-badge">Disponível para oportunidades</div>
-    <h1>Thiago<br><span class="accent">Barros</span></h1>
-    <p class="hero-bio">
-      <strong>Desenvolvedor Backend Java</strong> com experiência real em ambientes produtivos corporativos. Especialista em APIs REST, Spring Boot, microsserviços e PostgreSQL — com formação sólida em infraestrutura e redes, do código à camada de segurança e disponibilidade.
-    </p>
-    <div class="hero-contacts">
-      <a class="contact-link primary" href="https://github.com/Thiagobarros01" target="_blank" rel="noopener">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-        GitHub
+  <header class="site-header">
+    <nav class="nav" aria-label="Navegação principal">
+      <a class="brand" href="#topo" aria-label="Thiago Barros">
+        <span class="brand-mark">TB</span>
+        <span>Thiago Barros</span>
       </a>
-      <a class="contact-link primary" href="https://linkedin.com/in/thiago-barros-ba8b9a20b" target="_blank" rel="noopener">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        LinkedIn
-      </a>
-      <a class="contact-link" href="mailto:thiagosbarros_@hotmail.com">
-        ✉ thiagosbarros_@hotmail.com
-      </a>
-      <a class="contact-link" href="tel:+5598985008137">
-        ☎ (98) 98500-8137
-      </a>
+
+      <ul class="nav-links">
+        <li><a href="#resumo">Resumo</a></li>
+        <li><a href="#competencias">Competências</a></li>
+        <li><a href="#soft-skills">Soft skills</a></li>
+        <li><a href="#experiencia">Experiência</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#formacao">Formação</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+
+      <button class="menu-button" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu" id="menuButton">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#resumo">Resumo</a>
+      <a href="#competencias">Competências</a>
+      <a href="#soft-skills">Soft skills</a>
+      <a href="#experiencia">Experiência</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#formacao">Formação</a>
+      <a href="#contato">Contato</a>
     </div>
-  </section>
+  </header>
 
-  <!-- DIFERENCIAL -->
-  <div class="diff-card fade fade-1">
-    <strong>Diferencial:</strong> Formação sólida em infraestrutura e redes proporciona visão completa das aplicações em produção — do código à camada de rede, segurança e disponibilidade. Experiência liderando TI de ponta a ponta em grupo com 5 empresas.
-  </div>
+  <main id="conteudo" class="page">
+    <section class="hero" id="topo">
+      <div>
+        <div class="eyebrow">Disponível para oportunidades</div>
+        <h1>Thiago Barros</h1>
+        <p class="role">Desenvolvedor Backend Java</p>
+        <p class="hero-copy">
+          Desenvolvo e sustento <strong>APIs REST, microsserviços e sistemas corporativos em produção</strong> com Java, Spring Boot e PostgreSQL. Minha base em infraestrutura e redes ajuda a enxergar o software além do código: segurança, disponibilidade, integrações, dados e operação.
+        </p>
 
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="sec-label">Stack técnica</div>
-
-    <div class="skills-block fade fade-1">
-      <div class="skills-block-name">Backend principal</div>
-      <div class="tags">
-        <span class="tag main">Java</span>
-        <span class="tag main">Spring Boot</span>
-        <span class="tag main">Spring Security</span>
-        <span class="tag main">Spring Data JPA</span>
-        <span class="tag main">Spring Cloud OpenFeign</span>
-        <span class="tag main">JPA / Hibernate</span>
-      </div>
-    </div>
-
-    <div class="skills-block fade fade-2">
-      <div class="skills-block-name">Arquitetura & padrões</div>
-      <div class="tags">
-        <span class="tag main">REST APIs</span>
-        <span class="tag main">Arquitetura Hexagonal</span>
-        <span class="tag main">Clean Architecture</span>
-        <span class="tag">DTO Pattern</span>
-        <span class="tag">Outbox Pattern</span>
-        <span class="tag">MVC</span>
-        <span class="tag">Idempotência</span>
-      </div>
-    </div>
-
-    <div class="skills-block fade fade-2">
-      <div class="skills-block-name">Banco de dados</div>
-      <div class="tags">
-        <span class="tag main">PostgreSQL</span>
-        <span class="tag">SQL Server</span>
-        <span class="tag">Oracle SQL</span>
-        <span class="tag">MySQL</span>
-        <span class="tag">MariaDB</span>
-        <span class="tag">H2</span>
-      </div>
-    </div>
-
-    <div class="skills-block fade fade-3">
-      <div class="skills-block-name">Testes & qualidade</div>
-      <div class="tags">
-        <span class="tag main">JUnit</span>
-        <span class="tag main">Mockito</span>
-        <span class="tag">Testes unitários</span>
-        <span class="tag">Testes de integração</span>
-        <span class="tag">Clean Code</span>
-        <span class="tag">Code Review</span>
-      </div>
-    </div>
-
-    <div class="skills-block fade fade-3">
-      <div class="skills-block-name">Mensageria & DevOps</div>
-      <div class="tags">
-        <span class="tag green">Apache Kafka</span>
-        <span class="tag green">RabbitMQ</span>
-        <span class="tag green">Docker</span>
-        <span class="tag green">Docker Compose</span>
-        <span class="tag green">GitHub Actions (CI/CD)</span>
-        <span class="tag green">Linux</span>
-        <span class="tag green">Git</span>
-      </div>
-    </div>
-
-    <div class="skills-block fade fade-4">
-      <div class="skills-block-name">Cloud & ferramentas</div>
-      <div class="tags">
-        <span class="tag amber">Google Cloud</span>
-        <span class="tag amber">AWS (EC2, S3, IAM)</span>
-        <span class="tag amber">Azure</span>
-        <span class="tag">Swagger / OpenAPI</span>
-        <span class="tag">JasperReports</span>
-        <span class="tag">Maven</span>
-        <span class="tag">Gradle</span>
-        <span class="tag">Power BI</span>
-      </div>
-    </div>
-
-    <div class="skills-block fade fade-4">
-      <div class="skills-block-name">Infraestrutura & outros</div>
-      <div class="tags">
-        <span class="tag">pfSense</span>
-        <span class="tag">MikroTik</span>
-        <span class="tag">VPN OpenVPN</span>
-        <span class="tag">Windows Server</span>
-        <span class="tag">Active Directory</span>
-        <span class="tag">Python</span>
-        <span class="tag">PHP</span>
-        <span class="tag">C# / ASP.NET Core</span>
-        <span class="tag">Scrum · Kanban</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIÊNCIA -->
-  <section id="experience">
-    <div class="sec-label">Experiência profissional</div>
-    <div class="xp-list">
-
-      <div class="xp-card fade fade-1">
-        <div class="xp-header">
-          <span class="xp-role">Analista de TI — Desenvolvimento &amp; Sustentação</span>
-          <span class="xp-period">03/2023 – Atual</span>
+        <div class="actions" aria-label="Links de contato">
+          <a class="button primary" href="mailto:thiagosbarros_@hotmail.com">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="2" />
+              <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            E-mail
+          </a>
+          <a class="button" href="THIAGO_BARROS_JAVA.pdf" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7 3h7l4 4v14H7V3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+              <path d="M14 3v5h4M9 13h6M9 17h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            Currículo PDF
+          </a>
+          <a class="button" href="https://github.com/Thiagobarros01" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.72-2.78.62-3.37-1.38-3.37-1.38-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.4 9.4 0 0 1 12 6.95c.85 0 1.7.12 2.5.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.59.69.49A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z" />
+            </svg>
+            GitHub
+          </a>
+          <a class="button" href="https://linkedin.com/in/thiago-barros-ba8b9a20b" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M4.98 3.5a2.5 2.5 0 1 0 0 5.001 2.5 2.5 0 0 0 0-5ZM3 9.75h4v10.75H3V9.75Zm6.25 0h3.83v1.47h.05c.53-.95 1.83-1.72 3.42-1.72 3.66 0 4.45 2.24 4.45 5.15v5.85h-4v-5.2c0-1.24-.02-2.84-1.83-2.84-1.84 0-2.12 1.36-2.12 2.76v5.28h-3.8V9.75Z" />
+            </svg>
+            LinkedIn
+          </a>
         </div>
-        <div class="xp-company">Grupo Zilfarma · São Luís – MA</div>
-        <ul class="xp-bullets">
-          <li>Desenvolvimento de sistemas internos e APIs REST (Java, Python, PHP) para automação de processos e integração com parceiros comerciais</li>
-          <li>Criação de sistema de acompanhamento de positivação (120/90/60/30 dias) em PHP + SQL Server com visibilidade estratégica para a área comercial</li>
-          <li>Geração automatizada de relatórios SELL-OUT via API para empresas parceiras</li>
-          <li>Integração de CRM, ERP Target, Power BI, Chatbots e APIs externas</li>
-          <li>Administração de banco de dados SQL Server, Active Directory, Microsoft 365 e Azure</li>
-          <li>Infraestrutura de rede: firewalls pfSense e MikroTik, VPN OpenVPN, servidores Linux (Debian) e Windows Server</li>
-        </ul>
-      </div>
 
-      <div class="xp-card fade fade-2">
-        <div class="xp-header">
-          <span class="xp-role">Desenvolvedor Backend Java</span>
-          <span class="xp-period">06/2022 – 07/2025</span>
+        <div class="metrics" aria-label="Resumo em números">
+          <div class="metric">
+            <strong>3+</strong>
+            <span>anos com backend Java em sistemas corporativos</span>
+          </div>
+          <div class="metric">
+            <strong>7+</strong>
+            <span>anos de vivência em TI, suporte e infraestrutura</span>
+          </div>
+          <div class="metric">
+            <strong>5</strong>
+            <span>empresas atendidas no grupo atual de atuação</span>
+          </div>
         </div>
-        <div class="xp-company">Prado M S Tecnologia · São Luís – MA</div>
-        <ul class="xp-bullets">
-          <li>Desenvolvimento e manutenção de APIs RESTful com Java e Spring Boot em sistema ERP corporativo em produção</li>
-          <li>Integração entre microsserviços com Spring Cloud OpenFeign e Apache Kafka em arquitetura distribuída</li>
-          <li>Modelagem e otimização de banco de dados PostgreSQL — tabelas, relacionamentos e ajuste de queries para performance</li>
-          <li>Segurança com Spring Security, controle de acesso e padronização de APIs via DTOs</li>
-          <li>Relatórios corporativos com JasperReports e testes unitários/integrados com JUnit e Mockito</li>
-          <li>Participação em code reviews, documentação técnica de endpoints e suporte a incidentes em produção</li>
-        </ul>
       </div>
 
-      <div class="xp-card fade fade-3">
-        <div class="xp-header">
-          <span class="xp-role">TI — Suporte e Infraestrutura</span>
-          <span class="xp-period">10/2018 – 06/2021</span>
+      <aside class="hero-card" aria-label="Dados rápidos">
+        <div class="portrait">
+          <img src="perfiil.png" alt="Foto de Thiago Barros" />
         </div>
-        <div class="xp-company">Distribuidora Nascente · São Luís – MA</div>
-        <ul class="xp-bullets">
-          <li>Sustentação do ERP TOTVS Winthor com geração de relatórios via Oracle SQL</li>
-          <li>Administração de servidores Windows Server (AD, IIS, TS) e Linux (Ubuntu) com VMware e VPN FortiClient</li>
-          <li>Configuração de redes, VLANs, Firewall FortiGate e roteadores Cisco via SSH</li>
-          <li>Treinamento de equipes comerciais em sistemas de força de vendas e ERP</li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- PROJETOS -->
-  <section id="projects">
-    <div class="sec-label">Projetos relevantes</div>
-    <div class="proj-grid">
-
-      <div class="proj-card fade fade-1">
-        <div class="proj-icon">💬</div>
-        <div class="proj-title">Sistema de Atendimento via WhatsApp (Meta Cloud API)</div>
-        <div class="proj-stack">
-          <span class="tag main">Java</span>
-          <span class="tag main">Spring Boot</span>
-          <span class="tag main">PostgreSQL</span>
-          <span class="tag green">Docker</span>
-          <span class="tag amber">Google Cloud</span>
-          <span class="tag">WebSocket</span>
+        <div class="hero-card-body">
+          <div class="quick-line">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Z" stroke="currentColor" stroke-width="2" />
+              <path d="M12 12.2a2.2 2.2 0 1 0 0-4.4 2.2 2.2 0 0 0 0 4.4Z" stroke="currentColor" stroke-width="2" />
+            </svg>
+            São Luís, MA
+          </div>
+          <div class="quick-line">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1.3.4 2.7.6 4.1.6.7 0 1.3.6 1.3 1.3v3.6c0 .7-.6 1.3-1.3 1.3C10.4 21.7 2.3 13.6 2.3 3.3 2.3 2.6 2.9 2 3.6 2h3.6c.7 0 1.3.6 1.3 1.3 0 1.4.2 2.8.6 4.1.1.4 0 .9-.3 1.2l-2.2 2.2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+            </svg>
+            (98) 98500-8137
+          </div>
+          <div class="quick-line">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="2" />
+              <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            thiagosbarros_@hotmail.com
+          </div>
         </div>
-        <ul class="proj-desc">
-          <li>Arquitetura Hexagonal (Ports &amp; Adapters) com separação clara de responsabilidades</li>
-          <li>Integração com WhatsApp Cloud API da Meta via Webhooks para processamento em tempo real</li>
-          <li>Outbox Pattern, idempotência e deduplicação de eventos para garantir confiabilidade</li>
-          <li>Processamento concorrente, retry automático e comunicação em tempo real com WebSocket</li>
-          <li>Containerização com Docker + Docker Compose e deploy em Google Cloud</li>
-        </ul>
-      </div>
+      </aside>
+    </section>
 
-      <div class="proj-card fade fade-2">
-        <div class="proj-icon">🏥</div>
-        <div class="proj-title">Sistema de Gestão de Clínica de Estética</div>
-        <div class="proj-stack">
-          <span class="tag main">Java</span>
-          <span class="tag main">Spring Boot</span>
-          <span class="tag">Swagger / OpenAPI</span>
-          <span class="tag">Arquitetura em Camadas</span>
-        </div>
-        <ul class="proj-desc">
-          <li>Backend completo para gestão de agendamentos, clientes e procedimentos</li>
-          <li>Arquitetura em camadas com validações robustas e documentação via Swagger/OpenAPI</li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- FORMAÇÃO -->
-  <section id="education">
-    <div class="sec-label">Formação acadêmica</div>
-    <div class="edu-list">
-      <div class="edu-card fade fade-1">
-        <div class="edu-dot"></div>
+    <section class="section" id="resumo">
+      <div class="section-head">
+        <div class="section-label">Resumo profissional</div>
         <div>
-          <div class="edu-course">Pós-graduação em Arquitetura de Software</div>
-          <div class="edu-inst">Anhanguera</div>
-          <div class="edu-period">2026 – 2027 (prevista)</div>
+          <h2>Backend com visão de produto, operação e infraestrutura.</h2>
+          <p class="section-intro">
+            Tenho uma trajetória que combina desenvolvimento backend, sustentação de sistemas, integração entre plataformas, bancos de dados e contato direto com áreas de negócio.
+          </p>
         </div>
       </div>
-      <div class="edu-card fade fade-2">
-        <div class="edu-dot"></div>
+
+      <div class="summary-panel">
+        <div class="callout fade">
+          <p>
+            Atuo no ciclo completo de desenvolvimento: levantamento técnico, implementação, testes, documentação, code review, suporte a incidentes e melhoria contínua. Meu diferencial é conseguir entender a aplicação em produção, o banco de dados, a rede e a necessidade do usuário final.
+          </p>
+        </div>
+
+        <div class="focus-list card fade">
+          <div class="focus-item">APIs REST com Java, Spring Boot, Spring Security e Spring Data JPA.</div>
+          <div class="focus-item">Integrações entre sistemas, microsserviços, OpenFeign, Kafka e APIs externas.</div>
+          <div class="focus-item">Rotinas de dados, relatórios, Power BI, SQL Server, PostgreSQL e Oracle SQL.</div>
+          <div class="focus-item">Sustentação em produção com senso de urgência e comunicação com áreas usuárias.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="competencias">
+      <div class="section-head">
+        <div class="section-label">Competências técnicas</div>
         <div>
-          <div class="edu-course">Bacharelado em Sistemas de Informação</div>
-          <div class="edu-inst">Centro Universitário Santa Terezinha (CEST) · São Luís, MA</div>
-          <div class="edu-period">2022 – 2025</div>
+          <h2>Stack sólida para construir, integrar e manter sistemas corporativos.</h2>
+          <p class="section-intro">
+            Trabalho principalmente com Java e Spring Boot, mas também tenho base forte em dados, integrações, automação, cloud e infraestrutura.
+          </p>
         </div>
       </div>
+
+      <div class="skills-layout">
+        <article class="card fade">
+          <h3>Backend Java</h3>
+          <p>Desenvolvo APIs, regras de negócio, autenticação/autorização, relatórios e contratos bem padronizados.</p>
+          <div class="tags">
+            <span class="tag blue">Java</span>
+            <span class="tag blue">Spring Boot</span>
+            <span class="tag blue">Spring Security</span>
+            <span class="tag blue">Spring Data JPA</span>
+            <span class="tag blue">JPA / Hibernate</span>
+            <span class="tag">JasperReports</span>
+            <span class="tag">Swagger / OpenAPI</span>
+          </div>
+        </article>
+
+        <article class="card fade">
+          <h3>Arquitetura e integração</h3>
+          <p>Uso padrões de arquitetura para separar responsabilidades e manter serviços mais confiáveis e fáceis de evoluir.</p>
+          <div class="tags">
+            <span class="tag blue">REST APIs</span>
+            <span class="tag blue">Microsserviços</span>
+            <span class="tag blue">OpenFeign</span>
+            <span class="tag">Arquitetura Hexagonal</span>
+            <span class="tag">Clean Architecture</span>
+            <span class="tag">DTO Pattern</span>
+            <span class="tag">Outbox Pattern</span>
+            <span class="tag">Idempotência</span>
+          </div>
+        </article>
+
+        <article class="card fade">
+          <h3>Dados, mensageria e automação</h3>
+          <p>Trabalho com modelagem, consultas, automações, relatórios e troca de eventos em ambientes distribuídos.</p>
+          <div class="tags">
+            <span class="tag green">PostgreSQL</span>
+            <span class="tag green">SQL Server</span>
+            <span class="tag green">Oracle SQL</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">MariaDB</span>
+            <span class="tag">Apache Kafka</span>
+            <span class="tag">RabbitMQ</span>
+            <span class="tag">Power BI</span>
+          </div>
+        </article>
+
+        <article class="card fade">
+          <h3>DevOps e infraestrutura</h3>
+          <p>Tenho base prática para operar aplicações, redes, servidores, clouds e ambientes internos de TI.</p>
+          <div class="tags">
+            <span class="tag amber">Docker</span>
+            <span class="tag amber">Docker Compose</span>
+            <span class="tag amber">GitHub Actions</span>
+            <span class="tag">Linux</span>
+            <span class="tag">Git</span>
+            <span class="tag">Google Cloud</span>
+            <span class="tag">AWS</span>
+            <span class="tag">Azure</span>
+            <span class="tag">pfSense</span>
+            <span class="tag">MikroTik</span>
+            <span class="tag">Windows Server</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="soft-skills">
+      <div class="section-head">
+        <div class="section-label">Soft skills</div>
+        <div>
+          <h2>Comportamento profissional que aparece no dia a dia.</h2>
+          <p class="section-intro">
+            Além da parte técnica, valorizo responsabilidade na entrega, comunicação clara, organização e postura colaborativa no dia a dia.
+          </p>
+        </div>
+      </div>
+
+      <div class="soft-grid">
+        <article class="soft-card fade">
+          <div class="soft-icon">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3>Ownership</h3>
+          <p>Assume problemas de ponta a ponta, da análise técnica à entrega e sustentação em produção.</p>
+        </article>
+
+        <article class="soft-card fade">
+          <div class="soft-icon">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 5h16v11H8l-4 4V5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3>Comunicação clara</h3>
+          <p>Traduz necessidades de áreas comerciais, operação e parceiros em soluções técnicas viáveis.</p>
+        </article>
+
+        <article class="soft-card fade">
+          <div class="soft-icon">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3v18M5 8h14M7 16h10" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3>Organização</h3>
+          <p>Documenta endpoints, participa de code reviews e mantém padrões para facilitar manutenção.</p>
+        </article>
+
+        <article class="soft-card fade">
+          <div class="soft-icon">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 6v6l4 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3>Senso de urgência</h3>
+          <p>Tem vivência com incidentes, sustentação de ERP e continuidade de sistemas corporativos.</p>
+        </article>
+
+        <article class="soft-card fade">
+          <div class="soft-icon">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 19V7l8-4 8 4v12l-8-4-8 4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+              <path d="M12 3v12" stroke="currentColor" stroke-width="2" />
+            </svg>
+          </div>
+          <h3>Aprendizado contínuo</h3>
+          <p>Expande repertório entre backend, cloud, segurança, dados, arquitetura e infraestrutura.</p>
+        </article>
+
+        <article class="soft-card fade">
+          <div class="soft-icon">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M8 7a4 4 0 1 0 8 0M4 21a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3>Capacidade de ensinar</h3>
+          <p>Já treinou equipes comerciais em sistemas de força de vendas e ERP, reduzindo dependência do suporte.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="experiencia">
+      <div class="section-head">
+        <div class="section-label">Experiência profissional</div>
+        <div>
+          <h2>Histórico com desenvolvimento, integrações, dados e infraestrutura.</h2>
+          <p class="section-intro">
+            Minha experiência passa por desenvolvimento backend, sustentação em produção, automações, integrações, dados e infraestrutura.
+          </p>
+        </div>
+      </div>
+
+      <div class="experience-list">
+        <article class="experience-item fade">
+          <div>
+            <span class="period">03/2023 - Atual</span>
+            <div class="company">Grupo Zilfarma</div>
+            <div class="location">São Luís, MA</div>
+            <span class="contract">MEI / PJ</span>
+          </div>
+          <div class="experience-body">
+            <h3 class="experience-title">Analista de TI | Desenvolvimento e Sustentação</h3>
+            <ul>
+              <li>Responsável pelo setor de TI em grupo com 5 empresas, atuando em sistemas, automações, integrações, dados e infraestrutura.</li>
+              <li>Desenvolvimento de sistemas internos e APIs REST com Java, Python e PHP para automatizar processos e integrar parceiros comerciais.</li>
+              <li>Criação de sistema de acompanhamento de positivação em PHP e SQL Server, entregando visibilidade estratégica à área comercial.</li>
+              <li>Automação de relatórios SELL-OUT via API e integração de CRM, ERP Target, Power BI, chatbots e APIs externas.</li>
+              <li>Administração de SQL Server, Active Directory, Microsoft 365, Azure, firewalls pfSense e MikroTik, VPN OpenVPN e servidores Linux/Windows.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="experience-item fade">
+          <div>
+            <span class="period">06/2022 - 07/2025</span>
+            <div class="company">Prado M S Tecnologia</div>
+            <div class="location">São Luís, MA</div>
+            <span class="contract">MEI / PJ</span>
+          </div>
+          <div class="experience-body">
+            <h3 class="experience-title">Desenvolvedor Backend Java</h3>
+            <ul>
+              <li>Desenvolvimento e manutenção de APIs RESTful com Java e Spring Boot em ERP corporativo em produção.</li>
+              <li>Integração entre microsserviços com Spring Cloud OpenFeign e Apache Kafka em arquitetura distribuída.</li>
+              <li>Modelagem e otimização de PostgreSQL, incluindo tabelas, relacionamentos, queries e melhorias de performance.</li>
+              <li>Aplicação de segurança com Spring Security, controle de acesso e padronização de APIs com DTOs.</li>
+              <li>Criação de relatórios com JasperReports, testes com JUnit e Mockito, code reviews, documentação técnica e suporte a incidentes.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="experience-item fade">
+          <div>
+            <span class="period">10/2018 - 06/2021</span>
+            <div class="company">Distribuidora Nascente</div>
+            <div class="location">São Luís, MA</div>
+          </div>
+          <div class="experience-body">
+            <h3 class="experience-title">TI | Suporte e Infraestrutura</h3>
+            <ul>
+              <li>Sustentação do ERP TOTVS Winthor com geração de relatórios via Oracle SQL.</li>
+              <li>Administração de Windows Server, Active Directory, IIS, Terminal Services, Linux Ubuntu, VMware e VPN FortiClient.</li>
+              <li>Configuração de redes, VLANs, Firewall FortiGate e roteadores Cisco via SSH.</li>
+              <li>Treinamento de equipes comerciais em sistemas de força de vendas e ERP.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="projetos">
+      <div class="section-head">
+        <div class="section-label">Projetos relevantes</div>
+        <div>
+          <h2>Projetos que reforçam backend, arquitetura e integrações reais.</h2>
+          <p class="section-intro">
+            Projetos em que apliquei Java, Spring Boot, arquitetura, integrações e preocupação com confiabilidade em produção.
+          </p>
+        </div>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card fade">
+          <div class="project-top">
+            <div class="project-mark">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 5h16v10H8l-4 4V5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <div>
+              <h3>Sistema de Atendimento via WhatsApp</h3>
+              <p>Integração com Meta Cloud API para atendimento e processamento de mensagens em tempo real.</p>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag blue">Java</span>
+            <span class="tag blue">Spring Boot</span>
+            <span class="tag green">PostgreSQL</span>
+            <span class="tag amber">Docker</span>
+            <span class="tag">Google Cloud</span>
+            <span class="tag">WebSocket</span>
+          </div>
+          <ul>
+            <li>Arquitetura Hexagonal com separação clara entre domínio, aplicação e adapters.</li>
+            <li>Webhooks, Outbox Pattern, idempotência, deduplicação de eventos, retry automático e concorrência.</li>
+            <li>Containerização com Docker e Docker Compose, com deploy em Google Cloud.</li>
+          </ul>
+        </article>
+
+        <article class="project-card fade">
+          <div class="project-top">
+            <div class="project-mark">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 21V7l7-4 7 4v14H5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                <path d="M9 21v-6h6v6M9 9h.01M15 9h.01M9 12h.01M15 12h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div>
+              <h3>Sistema de Gestão de Clínica de Estética</h3>
+              <p>Backend privado para gestão de agendamentos, clientes e procedimentos.</p>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag blue">Java</span>
+            <span class="tag blue">Spring Boot</span>
+            <span class="tag">Swagger / OpenAPI</span>
+            <span class="tag">Arquitetura em Camadas</span>
+          </div>
+          <ul>
+            <li>Modelagem de regras de negócio para agenda, clientes, procedimentos e fluxo operacional.</li>
+            <li>Validações, organização em camadas e documentação de endpoints com Swagger/OpenAPI.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="formacao">
+      <div class="section-head">
+        <div class="section-label">Formação e certificações</div>
+        <div>
+          <h2>Base acadêmica em sistemas e evolução constante em backend.</h2>
+          <p class="section-intro">
+            Sigo evoluindo minha base em arquitetura de software, backend, banco de dados, segurança e infraestrutura.
+          </p>
+        </div>
+      </div>
+
+      <div class="education-grid">
+        <article class="education-card fade">
+          <h3>Pós-graduação em Arquitetura de Software</h3>
+          <p>Anhanguera | 2026 - 2027 (prevista)</p>
+        </article>
+        <article class="education-card fade">
+          <h3>Bacharelado em Sistemas de Informação</h3>
+          <p>Centro Universitário Santa Terezinha (CEST), São Luís, MA | 2022 - 2025</p>
+        </article>
+      </div>
+
+      <div class="cert-layout">
+        <article class="cert-card fade">
+          <h3>Idiomas</h3>
+          <div class="cert-list">
+            <span class="tag green">Português nativo</span>
+            <span class="tag">Inglês para leitura técnica</span>
+          </div>
+        </article>
+
+        <article class="cert-card fade">
+          <h3>Certificações e cursos</h3>
+          <div class="cert-list">
+            <span class="tag blue">Java Completo</span>
+            <span class="tag blue">Spring Boot Expert</span>
+            <span class="tag">C# Completo</span>
+            <span class="tag">Python 53h</span>
+            <span class="tag">Administração de Banco de Dados</span>
+            <span class="tag">Segurança em TI</span>
+            <span class="tag">LGPD Avançado</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Cibersegurança</span>
+            <span class="tag">pfSense</span>
+            <span class="tag">Inteligência Artificial</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="contato">
+      <div class="contact-panel fade">
+        <div>
+          <div class="section-label">Contato</div>
+          <h2>Aberto para conversar sobre oportunidades backend.</h2>
+          <p>
+            Busco oportunidades onde eu possa contribuir com Java, Spring Boot, integrações, dados e sustentação de sistemas que precisam funcionar bem em produção.
+          </p>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="mailto:thiagosbarros_@hotmail.com">Enviar e-mail</a>
+          <a class="button" href="tel:+5598985008137">Ligar</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="page">
+      <div><strong>Thiago Barros</strong> | Desenvolvedor Backend Java</div>
+      <div>São Luís, MA | Atualizado em 2026</div>
     </div>
-  </section>
+  </footer>
 
-  <!-- CERTIFICAÇÕES -->
-  <section id="certs">
-    <div class="sec-label">Certificações</div>
-    <div class="cert-grid">
-      <div class="cert-item fade fade-1">
-        <div class="cert-source">Udemy</div>
-        Java Completo · POO + Projetos
-      </div>
-      <div class="cert-item fade fade-1">
-        <div class="cert-source">Udemy</div>
-        Spring Boot Expert · JWT e OAuth2
-      </div>
-      <div class="cert-item fade fade-2">
-        <div class="cert-source">Udemy</div>
-        C# Completo · POO + Projetos
-      </div>
-      <div class="cert-item fade fade-2">
-        <div class="cert-source">Udemy</div>
-        pfSense · 11h
-      </div>
-      <div class="cert-item fade fade-3">
-        <div class="cert-source">Fundação Bradesco</div>
-        Python · 53h
-      </div>
-      <div class="cert-item fade fade-3">
-        <div class="cert-source">Fundação Bradesco</div>
-        Administração de Banco de Dados
-      </div>
-      <div class="cert-item fade fade-4">
-        <div class="cert-source">Fundação Bradesco</div>
-        Segurança em TI
-      </div>
-      <div class="cert-item fade fade-4">
-        <div class="cert-source">Escola Conquer</div>
-        Inteligência Artificial
-      </div>
-      <div class="cert-item fade fade-5">
-        <div class="cert-source">Intuix</div>
-        LGPD Avançado
-      </div>
-      <div class="cert-item fade fade-5">
-        <div class="cert-source">Outros</div>
-        Docker · Cibersegurança
-      </div>
-    </div>
-  </section>
+  <script>
+    const menuButton = document.getElementById("menuButton");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const navLinks = [...document.querySelectorAll(".nav-links a")];
+    const allMenuLinks = [...document.querySelectorAll(".mobile-menu a")];
 
-</main>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-name">Thiago Barros</div>
-  <div class="footer-sub">Desenvolvedor Backend Java · São Luís – MA</div>
-  <div class="footer-links">
-    <a class="contact-link" href="https://github.com/Thiagobarros01" target="_blank" rel="noopener">GitHub</a>
-    <a class="contact-link" href="https://linkedin.com/in/thiago-barros-ba8b9a20b" target="_blank" rel="noopener">LinkedIn</a>
-    <a class="contact-link" href="mailto:thiagosbarros_@hotmail.com">E-mail</a>
-    <a class="contact-link" href="tel:+5598985008137">(98) 98500-8137</a>
-  </div>
-  <p style="margin-top:2rem;font-size:12px;color:#555e75;">© 2025 Thiago Barros. Todos os direitos reservados.</p>
-</footer>
-
-<script>
-  // Scroll-triggered fade-in
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
+    menuButton.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
     });
-  }, { threshold: 0.1 });
 
-  document.querySelectorAll('.fade').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(18px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-  });
-
-  // Nav active link highlight
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    allMenuLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+      });
     });
-    navLinks.forEach(a => {
-      a.style.color = a.getAttribute('href') === '#' + current ? '#3b82f6' : '';
-    });
-  });
-</script>
 
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll(".fade").forEach((element) => fadeObserver.observe(element));
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach((link) => {
+          link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`);
+        });
+      });
+    }, { rootMargin: "-30% 0px -62% 0px", threshold: 0 });
+
+    document.querySelectorAll("main section[id]").forEach((section) => sectionObserver.observe(section));
+  </script>
 </body>
 </html>
