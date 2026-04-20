@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thiago Barros — Desenvolvedor Backend Java</title>
+  <meta name="description" content="Portfólio de Thiago Barros, Desenvolvedor Backend Java com experiência em Spring Boot, microsserviços, PostgreSQL e infraestrutura." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b0e14;
+      --bg2: #111520;
+      --bg3: #181d2a;
+      --card: #141927;
+      --border: rgba(255,255,255,0.07);
+      --border2: rgba(255,255,255,0.13);
+      --text: #e8eaf0;
+      --text2: #8b92a8;
+      --text3: #555e75;
+      --blue: #3b82f6;
+      --blue-dim: #1d4ed8;
+      --blue-bg: rgba(59,130,246,0.10);
+      --blue-border: rgba(59,130,246,0.28);
+      --green: #22c55e;
+      --green-bg: rgba(34,197,94,0.10);
+      --green-border: rgba(34,197,94,0.25);
+      --amber: #f59e0b;
+      --amber-bg: rgba(245,158,11,0.10);
+      --amber-border: rgba(245,158,11,0.25);
+      --accent-line: #3b82f6;
+      --radius: 14px;
+      --radius-sm: 8px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* subtle grid texture */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(11,14,20,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.03em;
+    }
+
+    .nav-logo span { color: var(--blue); }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text2);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── LAYOUT ── */
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 100px 2rem 6rem;
+    }
+
+    section { margin-bottom: 5rem; }
+
+    /* ── SECTION LABEL ── */
+    .sec-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 1.5rem;
+    }
+
+    .sec-label::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1.5px;
+      background: var(--blue);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      padding-top: 2rem;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 5rem;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--blue);
+      background: var(--blue-bg);
+      border: 1px solid var(--blue-border);
+      padding: 5px 13px;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--blue);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    #hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(40px, 7vw, 68px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+
+    #hero h1 .accent { color: var(--blue); }
+
+    .hero-bio {
+      font-size: 16px;
+      color: var(--text2);
+      line-height: 1.75;
+      max-width: 580px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-bio strong { color: var(--text); font-weight: 500; }
+
+    .hero-contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border2);
+      color: var(--text2);
+      text-decoration: none;
+      transition: border-color .2s, color .2s, background .2s;
+      background: var(--card);
+    }
+
+    .contact-link:hover {
+      border-color: var(--blue-border);
+      color: var(--blue);
+      background: var(--blue-bg);
+    }
+
+    .contact-link.primary {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+
+    .contact-link.primary:hover {
+      background: var(--blue-dim);
+      border-color: var(--blue-dim);
+      color: #fff;
+    }
+
+    /* ── DIFFERENCIAL ── */
+    .diff-card {
+      background: var(--blue-bg);
+      border: 1px solid var(--blue-border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 5rem;
+      font-size: 14px;
+      color: #93c5fd;
+      line-height: 1.7;
+      animation: fadeUp 0.7s 0.15s ease both;
+    }
+
+    .diff-card strong { color: #bfdbfe; font-weight: 500; }
+
+    /* ── SKILLS ── */
+    .skills-block { margin-bottom: 1.5rem; }
+    .skills-block-name {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text3);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; }
+
+    .tag {
+      font-size: 12.5px;
+      font-weight: 400;
+      padding: 5px 13px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--text2);
+      background: var(--card);
+      transition: border-color .2s, color .2s;
+    }
+
+    .tag:hover { border-color: var(--border2); color: var(--text); }
+
+    .tag.main {
+      background: var(--blue-bg);
+      border-color: var(--blue-border);
+      color: #93c5fd;
+      font-weight: 500;
+    }
+
+    .tag.green {
+      background: var(--green-bg);
+      border-color: var(--green-border);
+      color: #86efac;
+    }
+
+    .tag.amber {
+      background: var(--amber-bg);
+      border-color: var(--amber-border);
+      color: #fcd34d;
+    }
+
+    /* ── EXPERIENCE ── */
+    .xp-list { display: flex; flex-direction: column; gap: 16px; }
+
+    .xp-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .25s, transform .2s;
+    }
+
+    .xp-card:hover {
+      border-color: var(--blue-border);
+      transform: translateY(-2px);
+    }
+
+    .xp-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--blue);
+    }
+
+    .xp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .xp-role {
+      font-family: 'Syne', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .xp-period {
+      font-size: 12px;
+      color: var(--text3);
+      white-space: nowrap;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+    }
+
+    .xp-company {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--blue);
+      margin-bottom: 14px;
+    }
+
+    .xp-bullets { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+
+    .xp-bullets li {
+      font-size: 13.5px;
+      color: var(--text2);
+      line-height: 1.6;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .xp-bullets li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    /* ── PROJECTS ── */
+    .proj-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 16px;
+    }
+
+    .proj-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .25s, transform .2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .proj-card:hover {
+      border-color: var(--green-border);
+      transform: translateY(-2px);
+    }
+
+    .proj-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--green);
+    }
+
+    .proj-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .proj-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .proj-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+
+    .proj-desc { list-style: none; display: flex; flex-direction: column; gap: 5px; margin-top: auto; }
+
+    .proj-desc li {
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.55;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .proj-desc li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    /* ── EDUCATION ── */
+    .edu-list { display: flex; flex-direction: column; gap: 12px; }
+
+    .edu-card {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 18px 22px;
+      background: var(--card);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      transition: border-color .2s;
+    }
+
+    .edu-card:hover { border-color: var(--border2); }
+
+    .edu-dot {
+      width: 11px; height: 11px;
+      border-radius: 50%;
+      background: var(--blue);
+      flex-shrink: 0;
+      margin-top: 5px;
+      box-shadow: 0 0 0 3px var(--blue-bg);
+    }
+
+    .edu-course { font-size: 14px; font-weight: 500; color: var(--text); }
+    .edu-inst { font-size: 13px; color: var(--text2); }
+    .edu-period { font-size: 12px; color: var(--text3); margin-top: 3px; }
+
+    /* ── CERTS ── */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+    }
+
+    .cert-item {
+      padding: 14px 16px;
+      background: var(--card);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.5;
+      transition: border-color .2s, color .2s;
+    }
+
+    .cert-item:hover { border-color: var(--border2); color: var(--text); }
+
+    .cert-source {
+      font-size: 10.5px;
+      font-weight: 500;
+      color: var(--text3);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem;
+      text-align: center;
+      background: var(--bg);
+    }
+
+    .footer-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .footer-sub {
+      font-size: 13px;
+      color: var(--text3);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade { animation: fadeUp 0.6s ease both; }
+    .fade-1 { animation-delay: 0.05s; }
+    .fade-2 { animation-delay: 0.12s; }
+    .fade-3 { animation-delay: 0.2s; }
+    .fade-4 { animation-delay: 0.28s; }
+    .fade-5 { animation-delay: 0.36s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { display: none; }
+      main { padding: 80px 1.25rem 4rem; }
+      #hero h1 { font-size: 38px; }
+      .proj-grid { grid-template-columns: 1fr; }
+      .xp-card { padding: 18px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">TB<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#skills">Stack</a></li>
+    <li><a href="#experience">Experiência</a></li>
+    <li><a href="#projects">Projetos</a></li>
+    <li><a href="#education">Formação</a></li>
+    <li><a href="mailto:thiagosbarros_@hotmail.com">Contato</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-badge">Disponível para oportunidades</div>
+    <h1>Thiago<br><span class="accent">Barros</span></h1>
+    <p class="hero-bio">
+      <strong>Desenvolvedor Backend Java</strong> com experiência real em ambientes produtivos corporativos. Especialista em APIs REST, Spring Boot, microsserviços e PostgreSQL — com formação sólida em infraestrutura e redes, do código à camada de segurança e disponibilidade.
+    </p>
+    <div class="hero-contacts">
+      <a class="contact-link primary" href="https://github.com/Thiagobarros01" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+        GitHub
+      </a>
+      <a class="contact-link primary" href="https://linkedin.com/in/thiago-barros-ba8b9a20b" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a class="contact-link" href="mailto:thiagosbarros_@hotmail.com">
+        ✉ thiagosbarros_@hotmail.com
+      </a>
+      <a class="contact-link" href="tel:+5598985008137">
+        ☎ (98) 98500-8137
+      </a>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAL -->
+  <div class="diff-card fade fade-1">
+    <strong>Diferencial:</strong> Formação sólida em infraestrutura e redes proporciona visão completa das aplicações em produção — do código à camada de rede, segurança e disponibilidade. Experiência liderando TI de ponta a ponta em grupo com 5 empresas.
+  </div>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="sec-label">Stack técnica</div>
+
+    <div class="skills-block fade fade-1">
+      <div class="skills-block-name">Backend principal</div>
+      <div class="tags">
+        <span class="tag main">Java</span>
+        <span class="tag main">Spring Boot</span>
+        <span class="tag main">Spring Security</span>
+        <span class="tag main">Spring Data JPA</span>
+        <span class="tag main">Spring Cloud OpenFeign</span>
+        <span class="tag main">JPA / Hibernate</span>
+      </div>
+    </div>
+
+    <div class="skills-block fade fade-2">
+      <div class="skills-block-name">Arquitetura & padrões</div>
+      <div class="tags">
+        <span class="tag main">REST APIs</span>
+        <span class="tag main">Arquitetura Hexagonal</span>
+        <span class="tag main">Clean Architecture</span>
+        <span class="tag">DTO Pattern</span>
+        <span class="tag">Outbox Pattern</span>
+        <span class="tag">MVC</span>
+        <span class="tag">Idempotência</span>
+      </div>
+    </div>
+
+    <div class="skills-block fade fade-2">
+      <div class="skills-block-name">Banco de dados</div>
+      <div class="tags">
+        <span class="tag main">PostgreSQL</span>
+        <span class="tag">SQL Server</span>
+        <span class="tag">Oracle SQL</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">MariaDB</span>
+        <span class="tag">H2</span>
+      </div>
+    </div>
+
+    <div class="skills-block fade fade-3">
+      <div class="skills-block-name">Testes & qualidade</div>
+      <div class="tags">
+        <span class="tag main">JUnit</span>
+        <span class="tag main">Mockito</span>
+        <span class="tag">Testes unitários</span>
+        <span class="tag">Testes de integração</span>
+        <span class="tag">Clean Code</span>
+        <span class="tag">Code Review</span>
+      </div>
+    </div>
+
+    <div class="skills-block fade fade-3">
+      <div class="skills-block-name">Mensageria & DevOps</div>
+      <div class="tags">
+        <span class="tag green">Apache Kafka</span>
+        <span class="tag green">RabbitMQ</span>
+        <span class="tag green">Docker</span>
+        <span class="tag green">Docker Compose</span>
+        <span class="tag green">GitHub Actions (CI/CD)</span>
+        <span class="tag green">Linux</span>
+        <span class="tag green">Git</span>
+      </div>
+    </div>
+
+    <div class="skills-block fade fade-4">
+      <div class="skills-block-name">Cloud & ferramentas</div>
+      <div class="tags">
+        <span class="tag amber">Google Cloud</span>
+        <span class="tag amber">AWS (EC2, S3, IAM)</span>
+        <span class="tag amber">Azure</span>
+        <span class="tag">Swagger / OpenAPI</span>
+        <span class="tag">JasperReports</span>
+        <span class="tag">Maven</span>
+        <span class="tag">Gradle</span>
+        <span class="tag">Power BI</span>
+      </div>
+    </div>
+
+    <div class="skills-block fade fade-4">
+      <div class="skills-block-name">Infraestrutura & outros</div>
+      <div class="tags">
+        <span class="tag">pfSense</span>
+        <span class="tag">MikroTik</span>
+        <span class="tag">VPN OpenVPN</span>
+        <span class="tag">Windows Server</span>
+        <span class="tag">Active Directory</span>
+        <span class="tag">Python</span>
+        <span class="tag">PHP</span>
+        <span class="tag">C# / ASP.NET Core</span>
+        <span class="tag">Scrum · Kanban</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIÊNCIA -->
+  <section id="experience">
+    <div class="sec-label">Experiência profissional</div>
+    <div class="xp-list">
+
+      <div class="xp-card fade fade-1">
+        <div class="xp-header">
+          <span class="xp-role">Analista de TI — Desenvolvimento &amp; Sustentação</span>
+          <span class="xp-period">03/2023 – Atual</span>
+        </div>
+        <div class="xp-company">Grupo Zilfarma · São Luís – MA</div>
+        <ul class="xp-bullets">
+          <li>Desenvolvimento de sistemas internos e APIs REST (Java, Python, PHP) para automação de processos e integração com parceiros comerciais</li>
+          <li>Criação de sistema de acompanhamento de positivação (120/90/60/30 dias) em PHP + SQL Server com visibilidade estratégica para a área comercial</li>
+          <li>Geração automatizada de relatórios SELL-OUT via API para empresas parceiras</li>
+          <li>Integração de CRM, ERP Target, Power BI, Chatbots e APIs externas</li>
+          <li>Administração de banco de dados SQL Server, Active Directory, Microsoft 365 e Azure</li>
+          <li>Infraestrutura de rede: firewalls pfSense e MikroTik, VPN OpenVPN, servidores Linux (Debian) e Windows Server</li>
+        </ul>
+      </div>
+
+      <div class="xp-card fade fade-2">
+        <div class="xp-header">
+          <span class="xp-role">Desenvolvedor Backend Java</span>
+          <span class="xp-period">06/2022 – 07/2025</span>
+        </div>
+        <div class="xp-company">Prado M S Tecnologia · São Luís – MA</div>
+        <ul class="xp-bullets">
+          <li>Desenvolvimento e manutenção de APIs RESTful com Java e Spring Boot em sistema ERP corporativo em produção</li>
+          <li>Integração entre microsserviços com Spring Cloud OpenFeign e Apache Kafka em arquitetura distribuída</li>
+          <li>Modelagem e otimização de banco de dados PostgreSQL — tabelas, relacionamentos e ajuste de queries para performance</li>
+          <li>Segurança com Spring Security, controle de acesso e padronização de APIs via DTOs</li>
+          <li>Relatórios corporativos com JasperReports e testes unitários/integrados com JUnit e Mockito</li>
+          <li>Participação em code reviews, documentação técnica de endpoints e suporte a incidentes em produção</li>
+        </ul>
+      </div>
+
+      <div class="xp-card fade fade-3">
+        <div class="xp-header">
+          <span class="xp-role">TI — Suporte e Infraestrutura</span>
+          <span class="xp-period">10/2018 – 06/2021</span>
+        </div>
+        <div class="xp-company">Distribuidora Nascente · São Luís – MA</div>
+        <ul class="xp-bullets">
+          <li>Sustentação do ERP TOTVS Winthor com geração de relatórios via Oracle SQL</li>
+          <li>Administração de servidores Windows Server (AD, IIS, TS) e Linux (Ubuntu) com VMware e VPN FortiClient</li>
+          <li>Configuração de redes, VLANs, Firewall FortiGate e roteadores Cisco via SSH</li>
+          <li>Treinamento de equipes comerciais em sistemas de força de vendas e ERP</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJETOS -->
+  <section id="projects">
+    <div class="sec-label">Projetos relevantes</div>
+    <div class="proj-grid">
+
+      <div class="proj-card fade fade-1">
+        <div class="proj-icon">💬</div>
+        <div class="proj-title">Sistema de Atendimento via WhatsApp (Meta Cloud API)</div>
+        <div class="proj-stack">
+          <span class="tag main">Java</span>
+          <span class="tag main">Spring Boot</span>
+          <span class="tag main">PostgreSQL</span>
+          <span class="tag green">Docker</span>
+          <span class="tag amber">Google Cloud</span>
+          <span class="tag">WebSocket</span>
+        </div>
+        <ul class="proj-desc">
+          <li>Arquitetura Hexagonal (Ports &amp; Adapters) com separação clara de responsabilidades</li>
+          <li>Integração com WhatsApp Cloud API da Meta via Webhooks para processamento em tempo real</li>
+          <li>Outbox Pattern, idempotência e deduplicação de eventos para garantir confiabilidade</li>
+          <li>Processamento concorrente, retry automático e comunicação em tempo real com WebSocket</li>
+          <li>Containerização com Docker + Docker Compose e deploy em Google Cloud</li>
+        </ul>
+      </div>
+
+      <div class="proj-card fade fade-2">
+        <div class="proj-icon">🏥</div>
+        <div class="proj-title">Sistema de Gestão de Clínica de Estética</div>
+        <div class="proj-stack">
+          <span class="tag main">Java</span>
+          <span class="tag main">Spring Boot</span>
+          <span class="tag">Swagger / OpenAPI</span>
+          <span class="tag">Arquitetura em Camadas</span>
+        </div>
+        <ul class="proj-desc">
+          <li>Backend completo para gestão de agendamentos, clientes e procedimentos</li>
+          <li>Arquitetura em camadas com validações robustas e documentação via Swagger/OpenAPI</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FORMAÇÃO -->
+  <section id="education">
+    <div class="sec-label">Formação acadêmica</div>
+    <div class="edu-list">
+      <div class="edu-card fade fade-1">
+        <div class="edu-dot"></div>
+        <div>
+          <div class="edu-course">Pós-graduação em Arquitetura de Software</div>
+          <div class="edu-inst">Anhanguera</div>
+          <div class="edu-period">2026 – 2027 (prevista)</div>
+        </div>
+      </div>
+      <div class="edu-card fade fade-2">
+        <div class="edu-dot"></div>
+        <div>
+          <div class="edu-course">Bacharelado em Sistemas de Informação</div>
+          <div class="edu-inst">Centro Universitário Santa Terezinha (CEST) · São Luís, MA</div>
+          <div class="edu-period">2022 – 2025</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICAÇÕES -->
+  <section id="certs">
+    <div class="sec-label">Certificações</div>
+    <div class="cert-grid">
+      <div class="cert-item fade fade-1">
+        <div class="cert-source">Udemy</div>
+        Java Completo · POO + Projetos
+      </div>
+      <div class="cert-item fade fade-1">
+        <div class="cert-source">Udemy</div>
+        Spring Boot Expert · JWT e OAuth2
+      </div>
+      <div class="cert-item fade fade-2">
+        <div class="cert-source">Udemy</div>
+        C# Completo · POO + Projetos
+      </div>
+      <div class="cert-item fade fade-2">
+        <div class="cert-source">Udemy</div>
+        pfSense · 11h
+      </div>
+      <div class="cert-item fade fade-3">
+        <div class="cert-source">Fundação Bradesco</div>
+        Python · 53h
+      </div>
+      <div class="cert-item fade fade-3">
+        <div class="cert-source">Fundação Bradesco</div>
+        Administração de Banco de Dados
+      </div>
+      <div class="cert-item fade fade-4">
+        <div class="cert-source">Fundação Bradesco</div>
+        Segurança em TI
+      </div>
+      <div class="cert-item fade fade-4">
+        <div class="cert-source">Escola Conquer</div>
+        Inteligência Artificial
+      </div>
+      <div class="cert-item fade fade-5">
+        <div class="cert-source">Intuix</div>
+        LGPD Avançado
+      </div>
+      <div class="cert-item fade fade-5">
+        <div class="cert-source">Outros</div>
+        Docker · Cibersegurança
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Thiago Barros</div>
+  <div class="footer-sub">Desenvolvedor Backend Java · São Luís – MA</div>
+  <div class="footer-links">
+    <a class="contact-link" href="https://github.com/Thiagobarros01" target="_blank" rel="noopener">GitHub</a>
+    <a class="contact-link" href="https://linkedin.com/in/thiago-barros-ba8b9a20b" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="contact-link" href="mailto:thiagosbarros_@hotmail.com">E-mail</a>
+    <a class="contact-link" href="tel:+5598985008137">(98) 98500-8137</a>
+  </div>
+  <p style="margin-top:2rem;font-size:12px;color:#555e75;">© 2025 Thiago Barros. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+  // Scroll-triggered fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(18px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+
+  // Nav active link highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? '#3b82f6' : '';
+    });
+  });
+</script>
+
+</body>
+</html>
